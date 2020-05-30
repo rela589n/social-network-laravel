@@ -1,0 +1,23 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.content {
+    margin-top: 70px;
+}
+
+.phone {
+    width: 414px;
+}
+
+.search {
+    border: none;
+    outline: none;
+    padding: 2px 10px;
+    border-radius: 3px;
+}
