@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+    # страница регистрации
     public function getSignup() 
     {
        return view('auth.signup');
     }
 
+    # регистрация пользователя
     public function postSignup(Request $request) 
     {
        $this->validate($request, [
@@ -32,19 +34,21 @@ class AuthController extends Controller
               ->with('info', 'Вы успешно зарегистрировались! Можно войти на сайт.');
     }
 
+    # страница входа
     public function getSignin() 
     {
        return view('auth.signin');
     }
 
-    public function postSignin(Request $request) 
+    # вход пользователя на сайт
+    public function postSignin(Request $request)
     {
         $this->validate($request, [
             'email' => 'required|max:255',
             'password' => 'required|min:6',
         ]);
 
-        if (!Auth::attempt( $request->only(['email', 'password']), $request->has('remember') )) 
+        if ( ! Auth::attempt( $request->only(['email', 'password']), $request->has('remember') ) )
         {
             return redirect()->back()->with('info', 'Неправильный логин или пароль.');
         }
@@ -52,7 +56,9 @@ class AuthController extends Controller
         return redirect()->route('home')->with('info', 'Вы вошли на сайт.');
     }
 
-    public function getSignout() {
+    # выйти из аккаунта
+    public function getSignout()
+    {
         Auth::logout();
 
         return redirect()->route('home');

@@ -8,22 +8,22 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function getProfile($username) 
+    # страница профиля или ошибка, если пользователь не найден
+    public function getProfile($username)
     {
        $user = User::where('username', $username)->first();
-
-       if (!$user) {
-           abort(404);
-       }
+       if ( ! $user ) abort(404);
 
        return view('profile.index', compact('user'));
     }
 
-    public function getEdit() 
+    # страница редактирования профиля
+    public function getEdit()
     {
         return view('profile.edit');
     }
 
+    # отредактировать профиль
     public function postEdit(Request $request) 
     {
         $this->validate($request, [

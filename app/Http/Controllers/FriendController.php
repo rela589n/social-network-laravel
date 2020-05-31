@@ -8,14 +8,13 @@ use Illuminate\Http\Request;
 
 class FriendController extends Controller
 {
+    # страница мои друзья
     public function getIndex()
     {
-        $friends = Auth::user()->friends();
-        $requests = Auth::user()->friendRequests();
-
-        return view('friends.index', [
-            'friends' => $friends,
-            'requests' => $requests
+        return view('friends.index',
+        [
+            'friends' => Auth::user()->friends(),
+            'requests' => Auth::user()->friendRequests()
         ]);
     }
 }

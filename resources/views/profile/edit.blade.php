@@ -7,6 +7,7 @@
     <h3>Редактировать профиль</h3>
     <form method="POST" action="{{ route('profile.edit') }}" novalidate>
         @csrf
+
         <div class="form-group">
             <label for="first_name">Ваше имя</label>
             <input type="text" name="first_name" 
@@ -16,7 +17,7 @@
 
             @if ($errors->has('first_name'))
                 <span class="help-block text-danger">
-                {{ $errors->first('first_name') }}
+                  {{ $errors->first('first_name') }}
                 </span>
             @endif
         </div>
@@ -30,7 +31,7 @@
             
             @if ($errors->has('last_name'))
                 <span class="help-block text-danger">
-                {{ $errors->first('last_name') }}
+                  {{ $errors->first('last_name') }}
                 </span>
             @endif
         </div>
@@ -44,7 +45,7 @@
             
             @if ($errors->has('location'))
                 <span class="help-block text-danger">
-                {{ $errors->first('location') }}
+                  {{ $errors->first('location') }}
                 </span>
             @endif
         </div>
