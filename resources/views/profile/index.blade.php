@@ -13,11 +13,19 @@
          <p>В ожидании {{ $user->getFirstNameOrUsername() }} 
          подтверждения запроса в друзья.</p>
      @elseif ( Auth::user()->hasFriendRequestReceived($user) )
-         <a href="#" class="btn btn-primary mb-2">Подтвердить дружбу</a>
+         <a href="{{ route('friend.accept', ['username' => $user->username]) }}"
+            class="btn btn-primary mb-2">Подтвердить дружбу</a>
      @elseif ( Auth::user()->isFriendWith($user) )
          {{ $user->getFirstNameOrUsername() }} у Вас в друзьях.
-     @else
-         <a href="#" class="btn btn-primary mb-2">Добавить в друзья</a>
+
+         <form action="{{ route('friend.delete', ['username' => $user->username]) }}"
+               method="POST">
+            @csrf
+            <input type="submit" class="btn btn-primary my-2" value="Удалить из друзей">
+         </form>
+     @elseif ( Auth::user()->id !== $user->id )
+         <a href="{{ route('friend.add', ['username' => $user->username]) }}"
+            class="btn btn-primary mb-2">Добавить в друзья</a>
      @endif
 
      <h4>{{ $user->getFirstNameOrUsername() }} друзья</h4>

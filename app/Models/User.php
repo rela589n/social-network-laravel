@@ -73,6 +73,12 @@ class User extends Authenticatable
         return "https://www.gravatar.com/avatar/{{ md5($this->email)?d=mp&s=40 }}";
     }
 
+    # пользователю принадлежит статус
+    public function statuses()
+    {
+        return $this->hasMany('App\Models\Status', 'user_id');
+    }
+
     # устанавливаем отношение многие ко многим, мои друзья
     public function friendsOfMine()
     {
@@ -121,10 +127,17 @@ class User extends Authenticatable
         $this->friendOf()->attach($user->id);
     }
 
-    # принять запрос на дружбу
-    public function acceptFriendRequest()
+    # удалить из друзей
+    public function deleteFriend(User $user)
     {
-        $this->friendRequests()->where('id', $user->id)->first()->pivot()->update([
+        $this->friendOf()->detach($user->id);
+        $this->friendsOfMine()->detach($user->id);
+    }
+
+    # принять запрос на дружбу
+    public function acceptFriendRequest(User $user)
+    {
+        $this->friendRequests()->where('id', $user->id)->first()->pivot->update([
             'accepted' => true
         ]);
     }
