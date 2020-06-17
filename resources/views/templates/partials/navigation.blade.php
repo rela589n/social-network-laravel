@@ -15,7 +15,7 @@
         @if ( Auth::check() )
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Стена</a>
+                <a class="nav-link" href="{{ route('home') }}">Стена</a>
             </li>
             <li class="nav-item {{ Request::is('friends') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('friend.index') }}">Друзья</a>
