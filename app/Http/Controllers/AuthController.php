@@ -53,7 +53,7 @@ class AuthController extends Controller
             return redirect()->back()->with('info', 'Неправильный логин или пароль.');
         }
 
-        return redirect()->route('home')->with('info', 'Вы вошли на сайт.');
+        return redirect()->route('home');
     }
 
     # выйти из аккаунта

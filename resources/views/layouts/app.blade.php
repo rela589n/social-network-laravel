@@ -11,17 +11,17 @@
     <title>Социальная сеть | {{ config('app.name') }}</title>
   </head>
   <body>
-    @include('templates.partials.navigation')
+    @include('layouts.partials.navigation')
 
     <div class="container content">
-        @include('templates.partials.alerts')
+        @include('layouts.partials.alerts')
         @yield('content')
     </div>
 
-    <footer class="fixed-bottom bg-primary text-light mt-3">
+    <footer class="mt-3">
         <!-- Copyright -->
-        <div class="text-center py-3">© 2020 Copyright:
-          <a href="{{ route('home') }}" class="text-light"> Social</a>
+        <div class="text-center py-3">©{{ date('Y') }}
+          <a href="{{ route('home') }}"> Social</a>
         </div>
     </footer>
 

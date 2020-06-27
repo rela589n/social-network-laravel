@@ -10933,7 +10933,7 @@ a.text-dark:focus {
 }
 
 .phone {
-  width: 414px;
+  width: 330px;
 }
 
 .search {
@@ -10941,5 +10941,11 @@ a.text-dark:focus {
   outline: none;
   padding: 2px 10px;
   border-radius: 3px;
+}
+
+.required:before {
+  content: "*";
+  color: red;
+  width: 2px;
 }
 

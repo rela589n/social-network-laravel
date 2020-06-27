@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Models\User;
-use App\Models\Status;
+use App\Models\{ User, Status};
 use Illuminate\Http\Request;
 
 class StatusController extends Controller

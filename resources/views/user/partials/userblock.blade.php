@@ -1,7 +1,9 @@
 <div class="media mb-2">
 
   <a href="{{ route('profile.index', ['username' => $user->username]) }}">
-    <img src="{{ $user->getAvatarUrl() }}" class="mr-3" alt="{{ $user->getNameOrUsername() }}">
+    <img src="{{ $user->getAvatarUrl() }}"
+         class="img-thumbnail rounded-circle mr-3"
+         alt="{{ $user->getNameOrUsername() }}">
   </a>
 
   <div class="media-body">

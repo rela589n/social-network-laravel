@@ -1,15 +1,15 @@
-@extends('templates.default')
+@extends('layouts.app')
 
 @section('content')
 <div class="row">
   <div class="col-lg-4 card card-body mx-auto">
 
-    <h3>Редактировать профиль</h3>
+    <h3>Редактировать</h3>
     <form method="POST" action="{{ route('profile.edit') }}" novalidate>
         @csrf
 
         <div class="form-group">
-            <label for="first_name">Ваше имя</label>
+            <label for="first_name">Имя</label>
             <input type="text" name="first_name" 
                     class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" 
                     id="first_name"
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            <label for="last_name">Ваша фамилия</label>
+            <label for="last_name">Фамилия</label>
             <input type="text" name="last_name" 
                     class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
                     id="last_name"
@@ -37,7 +37,7 @@
         </div>
 
         <div class="form-group">
-            <label for="location">Локация</label>
+            <label for="location">Страна</label>
             <input type="text" name="location" 
                     class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" 
                     id="location"

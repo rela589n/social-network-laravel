@@ -1,4 +1,4 @@
-@extends('templates.default')
+@extends('layouts.app')
 
 @section('content')
 <div class="row">
@@ -13,7 +13,7 @@
          @foreach ($statuses as $status)
          <div class="media">
             <a class="mr-3" href="{{ route('profile.index', ['username' => $status->user->username]) }}">
-            <img class="media-object rounded" src="{{ $status->user->getAvatarUrl() }}"
+            <img class="media-object img-thumbnail rounded-circle" src="{{ $status->user->getAvatarUrl() }}"
                alt="{{ $status->user->getNameOrUsername() }}">
             </a>
             <div class="media-body">
@@ -37,7 +37,7 @@
             @foreach ($status->replies as $reply)
                <div class="media">
                   <a class="mr-3" href="{{ route('profile.index', ['username' => $reply->user->username]) }}">
-                  <img class="media-object rounded" src="{{ $reply->user->getAvatarUrl() }}"
+                  <img class="media-object img-thumbnail rounded-circle" src="{{ $reply->user->getAvatarUrl() }}"
                      alt="{{ $reply->user->getNameOrUsername() }}">
                   </a>
                   <div class="media-body">
@@ -109,7 +109,7 @@
             class="btn btn-primary mb-2">Добавить в друзья</a>
      @endif
 
-     <h4>{{ $user->getFirstNameOrUsername() }} друзья</h4>
+     <h4>Друзья</h4>
 
      @if ( ! $user->friends()->count() )
         <p>{{ $user->getFirstNameOrUsername() }} нет друзей</p>
