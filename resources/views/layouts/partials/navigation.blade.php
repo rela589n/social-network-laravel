@@ -37,14 +37,21 @@
               <a href="{{ route('profile.edit') }}" class="nav-link">Настройки</a>
             </li>
             <li class="nav-item">
-              <a href="{{ route('auth.signout') }}" class="nav-link">Выйти</a>
+              <a href="{{ route('logout') }}" class="nav-link"
+                 onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();"
+              >Выйти</a>
+              
+              <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                  @csrf
+              </form>
             </li>
         @else
-            <li class="nav-item {{ Request::is('signup') ? 'active' : '' }}">
-               <a href="{{ route('auth.signup') }}" class="nav-link">Зарегистрироваться</a>
+            <li class="nav-item {{ Request::is('register') ? 'active' : '' }}">
+               <a href="{{ route('register') }}" class="nav-link">Зарегистрироваться</a>
             </li>
-            <li class="nav-item {{ Request::is('signin') ? 'active' : '' }}">
-               <a href="{{ route('auth.signin') }}" class="nav-link">Войти</a>
+            <li class="nav-item {{ Request::is('login') ? 'active' : '' }}">
+               <a href="{{ route('login') }}" class="nav-link">Войти</a>
             </li>
         @endif
         </ul>

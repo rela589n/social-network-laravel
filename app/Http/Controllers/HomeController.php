@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Status;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,8 @@ class HomeController extends Controller
             return view('timeline.index', compact('statuses'));
         }
 
-        return view('home');
+        $count_register_users = User::all()->count();
+
+        return view('home', compact('count_register_users'));
     }
 }

@@ -14,28 +14,21 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 # Авторизация
-Route::get('/signout', 'AuthController@getSignout')->name('auth.signout');
-
-Route::middleware('guest')->group(function () {
-    Route::get('/signup', 'AuthController@getSignup')->name('auth.signup');
-    Route::get('/signin', 'AuthController@getSignin')->name('auth.signin');
-    Route::post('/signup', 'AuthController@postSignup');
-    Route::post('/signin', 'AuthController@postSignin');
-});
+Auth::routes(['verify' => true]);
 
 # Поиск
-Route::get('/search', 'SearchController@getResults')->name('search.results');
+Route::get('/search', 'SearchController@getResults')->middleware('verified')->name('search.results');
 
 # Профили
-Route::get('/user/{username}', 'ProfileController@getProfile')->name('profile.index');
+Route::get('/user/{username}', 'ProfileController@getProfile')->middleware('verified')->name('profile.index');
 
-Route::middleware('auth')->prefix('profile')->name('profile.')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('profile')->name('profile.')->group(function () {
     Route::get('/edit', 'ProfileController@getEdit')->name('edit');
     Route::post('/edit', 'ProfileController@postEdit')->name('edit');
 });
 
 # Друзья
-Route::middleware('auth')->prefix('friends')->name('friend.')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('friends')->name('friend.')->group(function () {
     Route::get('/', 'FriendController@getIndex')->name('index');
     Route::get('/add/{username}', 'FriendController@getAdd')->name('add');
     Route::get('/accept/{username}', 'FriendController@getAccept')->name('accept');
@@ -43,7 +36,7 @@ Route::middleware('auth')->prefix('friends')->name('friend.')->group(function ()
 });
 
 # Стена
-Route::middleware('auth')->prefix('status')->name('status.')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('status')->name('status.')->group(function () {
     Route::post('/', 'StatusController@postStatus')->name('post');
     Route::post('/{statusId}/reply', 'StatusController@postReply')->name('reply');
     Route::get('/{statusId}/like', 'StatusController@getLike')->name('like');
