@@ -11,9 +11,10 @@
         <div class="form-group">
             <label for="first_name">Имя</label>
             <input type="text" name="first_name" 
-                    class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" 
+                    class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}"
                     id="first_name"
-                    value="{{ Request::old('first_name') ?: Auth::user()->first_name }}">
+                    value="{{ Request::old('first_name') ?: Auth::user()->first_name }}"
+            >
 
             @if ($errors->has('first_name'))
                 <span class="help-block text-danger">
@@ -27,7 +28,8 @@
             <input type="text" name="last_name" 
                     class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
                     id="last_name"
-                    value="{{ Request::old('last_name') ?: Auth::user()->last_name }}">
+                    value="{{ Request::old('last_name') ?: Auth::user()->last_name }}"
+            >
             
             @if ($errors->has('last_name'))
                 <span class="help-block text-danger">
@@ -41,7 +43,8 @@
             <input type="text" name="location" 
                     class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" 
                     id="location"
-                    value="{{ Request::old('location') ?: Auth::user()->location }}">
+                    value="{{ Request::old('location') ?: Auth::user()->location }}"
+            >
             
             @if ($errors->has('location'))
                 <span class="help-block text-danger">

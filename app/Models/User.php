@@ -73,13 +73,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return "https://www.gravatar.com/avatar/{{ md5($this->email)?d=mp&s=40 }}";
     }
 
-    # пользователю принадлежит статус
+    # пользователю принадлежит статус (связь один ко многим)
     public function statuses()
     {
         return $this->hasMany('App\Models\Status', 'user_id');
     }
 
-    # получить лайки пользователя
+    # получить лайки пользователя (связь один ко многим)
     public function likes()
     {
         return $this->hasMany('App\Models\Like', 'user_id');
@@ -154,10 +154,32 @@ class User extends Authenticatable implements MustVerifyEmail
         return (bool) $this->friends()->where('id', $user->id)->count();
     }
 
+    # запись уже пролайкана
     public function hasLikedStatus(Status $status)
     {
         return (bool) $status->likes
           ->where('user_id', $this->id)
           ->count();
+    }
+
+    # получить путь к аватарке
+    # создать папки по пути, если не существуют
+    public function getAvatarsPath($user_id)
+    {
+        $path = "uploads/avatars/id{$user_id}";
+
+        if ( ! file_exists($path) ) mkdir($path, 0777, true);
+
+        return "/$path/";
+    }
+
+    # удалить все аватарки в папке пользователя
+    public function clearAvatars($user_id) {
+        $path = "uploads/avatars/id{$user_id}";
+
+        if ( file_exists( public_path("/$path") ) ) {
+            foreach( glob( public_path("/$path/*") ) as $avatar )
+            unlink($avatar);
+        }
     }
 }

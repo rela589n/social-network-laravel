@@ -6,8 +6,9 @@
         <label for="email">Email</label>
         <input type="email" name="email" 
             class="form-control @error('email') is-invalid @enderror" 
-            id="email"
-            value="{{ old('email') }}" autofocus>
+            id="email" autofocus
+            value="{{ old('email') }}"
+        >
 
         @error('email')
             <span class="help-block text-danger">
@@ -20,7 +21,8 @@
         <label for="password">Пароль</label>
         <input type="password" name="password" 
             class="form-control @error('password') is-invalid @enderror" 
-            id="password">
+            id="password"
+        >
         
         @error('password')
             <span class="help-block text-danger">

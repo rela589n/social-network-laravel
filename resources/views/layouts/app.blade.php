@@ -19,10 +19,12 @@
     </div>
 
     <footer class="mt-3">
+    
         <!-- Copyright -->
         <div class="text-center py-3">©{{ date('Y') }}
           <a href="{{ route('home') }}"> Social</a>
         </div>
+
     </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>

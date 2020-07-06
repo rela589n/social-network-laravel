@@ -49,7 +49,8 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        # unique:users,email - указываем проверку, по названию поля email в базе
+        # unique:users,email - email искать данное поле в базе
+        # проверка на уникальность по email
         $validator = Validator::make($data, [
             'register_username' => ['required', 'string', 'max:30'],
             'register_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],

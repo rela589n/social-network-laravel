@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
 <div class="container">
     @if ( Auth::check() )
-      <a class="navbar-brand" href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">Social</a>
+      <a class="navbar-brand" href="{{ route('profile.index',
+             ['username' => Auth::user()->username]) }}">Social</a>
     @else
       <a class="navbar-brand" href="{{ route('home') }}">Social</a>
     @endif
@@ -29,22 +30,34 @@
         @endif
         <ul class="navbar-nav ml-auto">
         @if ( Auth::check() )
-            <li class="nav-item {{ Request::is('user/' . Auth::user()->username) ? 'active' : '' }}">
-              <a href="{{ route('profile.index', ['username' => Auth::user()->username]) }}" 
-                 class="nav-link">{{ Auth::user()->getNameOrUsername() }}</a>
-            </li>
-            <li class="nav-item {{ Request::is('profile/edit') ? 'active' : '' }}">
-              <a href="{{ route('profile.edit') }}" class="nav-link">Настройки</a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('logout') }}" class="nav-link"
-                 onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();"
-              >Выйти</a>
-              
-              <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                  @csrf
-              </form>
+            <li class="nav-item dropdown {{ Request::is('user/' . Auth::user()->username) ? 'active' : '' }}">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
+                @if ( ! Auth::user()->avatar )
+                  <img src="{{ Auth::user()->getAvatarUrl() }}"
+                      width="40" height="40" class="rounded-circle">
+                @else
+                  <img src="{{ Auth::user()->getAvatarsPath(Auth::user()->id)
+                             . Auth::user()->avatar }}"
+                    width="40" height="40" class="rounded-circle">
+                @endif
+
+                {{ Auth::user()->getNameOrUsername() }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item"
+                  href="{{ route('profile.index', ['username' => Auth::user()->username]) }}">Профиль</a>
+                <a class="dropdown-item" href="{{ route('profile.edit') }}">Редактировать</a>
+                <a href="{{ route('logout') }}" class="dropdown-item"
+                    onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();"
+                >Выйти</a>
+                
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                </form>
+              </div>
             </li>
         @else
             <li class="nav-item {{ Request::is('register') ? 'active' : '' }}">

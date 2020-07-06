@@ -8,11 +8,13 @@
         <div class="form-group">
             <textarea name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}"
                       placeholder="Что нового {{ Auth::user()->getFirstNameOrUsername() }}?" rows="3"></textarea>
+
             @if ($errors->has('status'))
               <div class="invalid-feedback">
                 {{ $errors->first('status') }}
               </div>
             @endif
+
         </div>
         <button type="submit" class="btn btn-primary">Опубликовать</button>
     </form>
@@ -27,13 +29,16 @@
   @else
     @foreach ($statuses as $status)
     <div class="media">
-      <a class="mr-3" href="{{ route('profile.index', ['username' => $status->user->username]) }}">
-      <img class="media-object img-thumbnail rounded-circle" src="{{ $status->user->getAvatarUrl() }}"
-           alt="{{ $status->user->getNameOrUsername() }}">
+      <a class="mr-3" href="{{ route('profile.index',
+                     ['username' => $status->user->username]) }}">
+      
+      @include('user.partials.avatar')
+
       </a>
       <div class="media-body">
       <h4>
-        <a href="{{ route('profile.index', ['username' => $status->user->username]) }}">
+        <a href="{{ route('profile.index',
+                     ['username' => $status->user->username]) }}">
         {{ $status->user->getNameOrUsername() }}</a>
       </h4>
       <p>{{ $status->body }}</p>
@@ -51,9 +56,11 @@
 
         @foreach ($status->replies as $reply)
           <div class="media">
-            <a class="mr-3" href="{{ route('profile.index', ['username' => $reply->user->username]) }}">
-            <img class="media-object img-thumbnail rounded-circle" src="{{ $reply->user->getAvatarUrl() }}"
-                alt="{{ $reply->user->getNameOrUsername() }}">
+            <a class="mr-3" href="{{ route('profile.index',
+                            ['username' => $reply->user->username]) }}">
+            <img class="media-object img-thumbnail rounded-circle"
+                 src="{{ $reply->user->getAvatarUrl() }}"
+                 alt="{{ $reply->user->getNameOrUsername() }}">
             </a>
             <div class="media-body">
             <h4>
@@ -83,7 +90,7 @@
         <div class="form-group">
           <textarea name="reply-{{ $status->id }}"
                     class="form-control{{ $errors->has("reply-{$status->id}") ? ' is-invalid' : '' }}"
-                placeholder="Прокомментировать" rows="3"></textarea>
+                    placeholder="Прокомментировать" rows="3"></textarea>
           @if ($errors->has("reply-{$status->id}"))
               <div class="invalid-feedback">
                 {{ $errors->first("reply-{$status->id}") }}

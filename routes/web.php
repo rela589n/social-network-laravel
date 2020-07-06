@@ -25,6 +25,7 @@ Route::get('/user/{username}', 'ProfileController@getProfile')->middleware('veri
 Route::middleware(['auth', 'verified'])->prefix('profile')->name('profile.')->group(function () {
     Route::get('/edit', 'ProfileController@getEdit')->name('edit');
     Route::post('/edit', 'ProfileController@postEdit')->name('edit');
+    Route::post('/upload-avatar/{username}', 'ProfileController@postUploadAvatar')->name('upload-avatar');
 });
 
 # Друзья

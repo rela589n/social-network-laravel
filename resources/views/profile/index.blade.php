@@ -7,19 +7,35 @@
      @include('user.partials.userblock')
      <hr>
 
+      @if ( Auth::user()->id === $user->id )
+      <form action="{{ route('profile.upload-avatar',
+                 ['username' => Auth::user()->username ]) }}"
+            enctype="multipart/form-data" class="my-4"
+            method="POST">
+       @csrf
+         <label for="avatar">Загрузить аватар</label><br>
+         <input type="file" name="avatar" id="avatar">
+         <input type="submit" class="btn btn-primary" value="Загрузить">
+      </form>
+      @endif
+
       @if ( ! $statuses->count() )
             <p>{{ $user->getFirstNameOrUsername() }} пока ничего не опубликовал.</p>
       @else
          @foreach ($statuses as $status)
          <div class="media">
-            <a class="mr-3" href="{{ route('profile.index', ['username' => $status->user->username]) }}">
-            <img class="media-object img-thumbnail rounded-circle" src="{{ $status->user->getAvatarUrl() }}"
-               alt="{{ $status->user->getNameOrUsername() }}">
+            <a class="mr-3" href="{{ route('profile.index',
+                   ['username' => $status->user->username]) }}">
+            
+            @include('user.partials.avatar')
+ 
             </a>
+
             <div class="media-body">
             <h4>
-            <a href="{{ route('profile.index', ['username' => $status->user->username]) }}">
-            {{ $status->user->getNameOrUsername() }}</a>
+               <a href="{{ route('profile.index',
+                        ['username' => $status->user->username]) }}">
+               {{ $status->user->getNameOrUsername() }}</a>
             </h4>
             <p>{{ $status->body }}</p>
             <ul class="list-inline">
@@ -36,14 +52,18 @@
 
             @foreach ($status->replies as $reply)
                <div class="media">
-                  <a class="mr-3" href="{{ route('profile.index', ['username' => $reply->user->username]) }}">
-                  <img class="media-object img-thumbnail rounded-circle" src="{{ $reply->user->getAvatarUrl() }}"
-                     alt="{{ $reply->user->getNameOrUsername() }}">
+                  <a class="mr-3" href="{{ route('profile.index',
+                                ['username' => $reply->user->username]) }}">
+                  <img class="media-object img-thumbnail rounded-circle"
+                       src="{{ $reply->user->getAvatarUrl() }}"
+                       alt="{{ $reply->user->getNameOrUsername() }}">
                   </a>
                   <div class="media-body">
                   <h4>
-                  <a href="{{ route('profile.index', ['username' => $reply->user->username]) }}">
-                  {{ $reply->user->getNameOrUsername() }}</a>
+                     <a href="{{ route('profile.index',
+                             ['username' => $reply->user->username]) }}">
+                        {{ $reply->user->getNameOrUsername() }}
+                     </a>
                   </h4>
                   <p>{{ $reply->body }}</p>
                   <ul class="list-inline">
@@ -68,8 +88,8 @@
                @csrf
                <div class="form-group">
                   <textarea name="reply-{{ $status->id }}"
-                           class="form-control{{ $errors->has("reply-{$status->id}") ? ' is-invalid' : '' }}"
-                        placeholder="Прокомментировать" rows="3"></textarea>
+                            class="form-control{{ $errors->has("reply-{$status->id}") ? ' is-invalid' : '' }}"
+                            placeholder="Прокомментировать" rows="3"></textarea>
                   @if ($errors->has("reply-{$status->id}"))
                      <div class="invalid-feedback">
                         {{ $errors->first("reply-{$status->id}") }}
