@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <title>Социальная сеть | {{ config('app.name') }}</title>
+    <title>{{ config('app.name') }}</title>
   </head>
   <body>
     @include('layouts.partials.navigation')
@@ -18,15 +18,22 @@
         @yield('content')
     </div>
 
-    <footer class="mt-3">
-    
+    <hr @if (Route::currentRouteNamed('home')) class="mt-0" @endif>
+
+    <footer class="my-3">
         <!-- Copyright -->
         <div class="text-center py-3">©{{ date('Y') }}
-          <a href="{{ route('home') }}"> Social</a>
+          <a href="{{ route('home') }}"> {{ config('app.name') }}</a>
         </div>
-
     </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+    </script>
+
+    @stack('scripts')
   </body>
 </html>

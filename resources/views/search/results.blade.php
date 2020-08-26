@@ -10,7 +10,7 @@
        <p>Пользователь не найден<p>
     @else
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 @foreach ($users as $user)
                   @include('user.partials.userblock')
                 @endforeach

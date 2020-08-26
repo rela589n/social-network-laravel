@@ -12,12 +12,12 @@
     @endif
   </a>
 
-  <div class="media-body">
-    <h5 class="mt-0">
-       <a href="{{ route('profile.index', ['username' => $user->username]) }}">
-         {{ $user->getNameOrUsername() }}
-       </a>
-    </h5>
+  <div class="d-flex align-items-center media-body">
+    <a href="{{ route('profile.index', ['username' => $user->username]) }}"
+       class="profile-link">
+      {{ $user->getNameOrUsername() }}
+    </a>
+    @widget('verify', ['id' => $user->id])
  
     @if ($user->location)
        <p>{{ $user->location }}</p>

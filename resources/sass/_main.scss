@@ -10,9 +10,15 @@
     width: 60px;
 }
 
-.search {
-    border: none;
-    outline: none;
-    border-radius: 8px;
-    padding: 3px 3px 3px 10px;
+.required:after {
+    content: '*';
+    color: #d51818;
+}
+
+.phone {
+    width: 375px;
+}
+
+.form-group {
+    position: relative;
 }

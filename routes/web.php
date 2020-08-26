@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+# Главная
 Route::get('/', 'HomeController@index')->name('home');
 
 # Авторизация

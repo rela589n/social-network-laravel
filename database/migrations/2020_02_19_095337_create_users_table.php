@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('location')->nullable();
+            $table->integer('verify')->default(0);
             $table->string('remember_token')->nullable();
             $table->timestamps();
         });

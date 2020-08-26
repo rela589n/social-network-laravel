@@ -58,9 +58,9 @@ class RegisterController extends Controller
         ]);
 
         $validator->setAttributeNames([
-            'register_username' => 'username',
-            'register_email' => 'email',
-            'register_password' => 'password',
+            'register_username' => 'Логин',
+            'register_email' => 'E-mail',
+            'register_password' => 'Пароль',
         ]);
         
         return $validator;
