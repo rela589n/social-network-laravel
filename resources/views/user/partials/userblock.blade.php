@@ -17,7 +17,8 @@
        class="profile-link">
       {{ $user->getNameOrUsername() }}
     </a>
-    @widget('verify', ['id' => $user->id])
+
+    @include('user.partials.verify', ['verify' => $user->verify] )
  
     @if ($user->location)
        <p>{{ $user->location }}</p>

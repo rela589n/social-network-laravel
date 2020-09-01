@@ -4,5 +4,5 @@
        class="profile-link">
     {{ $status->user->getNameOrUsername() }}</a>
     
-    @widget('verify', ['id' => $status->user->id] )
+    @include('user.partials.verify', ['verify' => $status->user->verify] )
 </div>
