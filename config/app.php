@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Intervention\Image\ImageServiceProvider::class,
+        morphos\MorphosBladeProvider::class,
 
         /*
          * Application Service Providers...

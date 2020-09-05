@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.5",
         "laravel/framework": "^7.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "wapmorgan/morphos-blade": "^1.6"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'register_username' => ['required', 'string', 'max:30'],
             'register_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'register_password' => ['required', 'string', 'min:8'],
+            'gender' => ['required', 'string'],
         ]);
 
         $validator->setAttributeNames([
@@ -78,6 +79,7 @@ class RegisterController extends Controller
             'username' => $data['register_username'],
             'email' => $data['register_email'],
             'password' => Hash::make($data['register_password']),
+            'gender' => $data['gender'],
         ]);
     }
 }

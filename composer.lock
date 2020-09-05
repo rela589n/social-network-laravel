@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33b16ba8dae1919f8c224aff0bee2b4d",
+    "content-hash": "a7377c45628a404d609d765361727c32",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3856,6 +3856,109 @@
                 "php"
             ],
             "time": "2020-06-15T23:49:30+00:00"
+        },
+        {
+            "name": "wapmorgan/morphos",
+            "version": "3.2.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wapmorgan/Morphos.git",
+                "reference": "6c845a04c6332616afa2c73afd0e103e6ee60b2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wapmorgan/Morphos/zipball/6c845a04c6332616afa2c73afd0e103e6ee60b2d",
+                "reference": "6c845a04c6332616afa2c73afd0e103e6ee60b2d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-readline": "For using interactive version of script"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/English/functions.php",
+                    "src/Russian/functions.php"
+                ],
+                "psr-4": {
+                    "morphos\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergey Vanyushin",
+                    "email": "wapmorgan@gmail.com",
+                    "role": "developer"
+                }
+            ],
+            "description": "A morphological solution for Russian and English language written completely in PHP. Provides classes to inflect personal names, geographical names, decline and pluralize nouns, generate cardinal and ordinal numerals, spell out money amounts and time.",
+            "homepage": "http://morphos.io",
+            "keywords": [
+                "Numerals",
+                "adjectives",
+                "cardinal",
+                "declension",
+                "english",
+                "geographical names",
+                "human-friendly",
+                "inflection",
+                "language",
+                "money",
+                "morphology",
+                "nouns",
+                "ordinal",
+                "personal names",
+                "pluralization",
+                "russian",
+                "spelling",
+                "time"
+            ],
+            "time": "2020-06-12T23:13:39+00:00"
+        },
+        {
+            "name": "wapmorgan/morphos-blade",
+            "version": "1.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wapmorgan/Morphos-Blade.git",
+                "reference": "181e9abae373eb873932bc9624916304ae14b820"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wapmorgan/Morphos-Blade/zipball/181e9abae373eb873932bc9624916304ae14b820",
+                "reference": "181e9abae373eb873932bc9624916304ae14b820",
+                "shasum": ""
+            },
+            "require": {
+                "wapmorgan/morphos": "~3.2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "morphos\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Adds @plural, @name, @numeral, @ordinal and @money tags to Blade for Russian pluralization and declenation.",
+            "keywords": [
+                "blade",
+                "morphology"
+            ],
+            "time": "2018-10-30T15:30:08+00:00"
         }
     ],
     "packages-dev": [

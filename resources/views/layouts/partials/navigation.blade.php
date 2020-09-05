@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
 <div class="container">
     @if ( Auth::check() )
       <a class="navbar-brand"

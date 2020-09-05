@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Сброс пароля</div>
+                <div class="card-header">Восстановление доступа к странице</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    @if (session('status') )
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
@@ -18,7 +18,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                            <div class="col-md-4 text-md-right"></div>
 
                             <div class="col-md-6">
                                 <input id="email" type="email"
@@ -26,8 +26,8 @@
                                        name="email" value="{{ old('email') }}"
                                        required
                                        autocomplete="email"
-                                       autofocus
-                                >
+                                       placeholder="Email"
+                                       autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">

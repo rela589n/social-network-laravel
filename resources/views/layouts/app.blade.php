@@ -14,16 +14,20 @@
     @include('layouts.partials.navigation')
 
     <div class="container content">
-        @include('layouts.partials.alerts')
-        @yield('content')
+      @include('layouts.partials.alerts')
+      @yield('content')
+
+      <hr class="row">
     </div>
 
-    <hr @if (Route::currentRouteNamed('home')) class="mt-0" @endif>
-
-    <footer class="my-3">
-        <!-- Copyright -->
-        <div class="text-center py-3">©{{ date('Y') }}
+    <footer class="container my-3 d-flex justify-content-between">
+        <div>
           <a href="{{ route('home') }}"> {{ config('app.name') }}</a>
+          © {{ date('Y') }}
+        </div>
+        <div>
+          <a href="#">О {{ config('app.name') }}</a>
+          <a href="#">Правила</a>
         </div>
     </footer>
 

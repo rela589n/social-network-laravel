@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+<div class="row content-main">
 
   <div class="col-lg-6">
     <h3>Ваши друзья</h3>

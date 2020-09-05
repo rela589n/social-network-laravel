@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+<div class="row content-main">
 
   <div class="col-lg-8">
      @include('user.partials.userblock')
@@ -21,7 +21,9 @@
       @endif
 
       @if ( ! $statuses->count() )
-            <p>{{ $user->getFirstNameOrUsername() }} пока ничего не опубликовал.</p>
+         <div class="alert alert-primary" role="alert">
+          Пока нет ни одной записи на стене.
+         </div>
       @else
          @foreach ($statuses as $status)
          <div class="media">
@@ -89,7 +91,7 @@
                               placeholder="Прокомментировать" rows="3"></textarea>
 
                      @if ($errors->has("reply-{$status->id}") )
-                        <span class="invalid-tooltip">
+                        <span class="invalid-feedback">
                            {{ $errors->first("reply-{$status->id}") }}
                         </span>
                      @endif
@@ -132,7 +134,8 @@
 
      <h4>Друзья</h4>
      @if ( ! $user->friends()->count() )
-        <p>{{ $user->getFirstNameOrUsername() }} нет друзей</p>
+        <p>У @name($user->getFirstNameOrUsername(),
+                   $user->gender, 'родительный') нет друзей</p>
      @else
         @foreach ($user->friends() as $user)
           @include('user.partials.userblock')

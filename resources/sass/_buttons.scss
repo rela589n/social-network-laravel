@@ -1,0 +1,19 @@
+.btn-app {
+  border: none;
+  outline: none;
+  padding: 6px 16px;
+  background-color: transparent;
+  color: $blue;
+  font-size: 16px;
+}
+
+.btn-app:hover {
+  text-decoration: none;
+  background-color: #ececec;
+  border-radius: 4px;
+}
+
+.btn-app:active,
+.btn-app:focus {
+  outline: none;
+}

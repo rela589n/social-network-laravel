@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-  <div class="col-lg-8">
+  <div class="col-lg-8 content-main">
     <form method="POST" action="{{ route('status.post') }}"
           class="needs-validation" novalidate>
       @csrf
@@ -13,7 +13,7 @@
                       rows="3"></textarea>
 
             @if ($errors->has('status'))
-              <span class="invalid-tooltip">
+              <span class="invalid-feedback">
                 {{ $errors->first('status') }}
               </span>
             @endif
@@ -23,12 +23,14 @@
                 <i class="fas fa-plus"></i> Опубликовать
         </button>
     </form>
+
+    <hr>
+
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-8">
-  <hr>
+  <div class="col-lg-8 content-main">
 
   @if ( ! $statuses->count() )
     <div class="alert alert-primary" role="alert">
@@ -101,7 +103,7 @@
                     rows="3"></textarea>
 
           @if ($errors->has("reply-{$status->id}"))
-              <span class="invalid-tooltip">
+              <span class="invalid-feedback">
                 {{ $errors->first("reply-{$status->id}") }}
               </span>
           @endif

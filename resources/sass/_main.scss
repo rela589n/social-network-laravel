@@ -1,5 +1,25 @@
+body .tooltip-inner {
+    background: #e7e7e7;
+    color: #181818;
+    font-size: 12px;
+}
+
+body .tooltip .arrow::before {
+    border-bottom-color: #e7e7e7;
+}
+
 .content {
-    margin-top: 90px;
+    margin-top: 62px;
+}
+
+.content-main {
+    background-color: white;
+    padding: 11px 6px;
+    border-radius: 0 0 4px 4px;
+}
+
+.content-main0 {
+    padding: 11px 6px;
 }
 
 .avatar {
@@ -16,7 +36,7 @@
 }
 
 .phone {
-    width: 375px;
+    width: 460px;
 }
 
 .form-group {
