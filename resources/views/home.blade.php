@@ -9,17 +9,28 @@
     где бы Вы ни находились.</p>
     <h3>Нас уже: {{ $count_register_users }}</h3>
     
-    <img class="phone" src="{{ asset('images/android_iphone.png') }}" alt="App mobile">
+    <div class="apps-block">
+      <div class="app-block">
+        <a href="#android"
+           target="_blank">
+          <img class="phone" src="{{ asset('images/android.png') }}" alt="Android">
+        </a>
+        <a href="#android"
+           target="_blank" class="btn-app">
+          <i class="fab fa-android"></i> Android
+        </a>
+      </div>
 
-    <div class="d-flex justify-content-around">
-      <a href="#"
-         target="_blank" class="btn-app">
-        <i class="fab fa-android"></i> Android
-      </a>
-      <a href="#"
-         target="_blank" class="btn-app">
-        <i class="fab fa-apple"></i> iPhone
-      </a>
+      <div class="app-block">
+        <a href="#iphone"
+           target="_blank">
+          <img class="phone" src="{{ asset('images/iphone.png') }}" alt="iPhone">
+        </a>
+        <a href="#iphone"
+           target="_blank" class="btn-app">
+          <i class="fab fa-apple"></i> iPhone
+        </a>
+      </div>
     </div>
 
   </div>

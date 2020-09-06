@@ -62,7 +62,23 @@ body .tooltip .arrow::before {
 }
 
 .phone {
-  width: 460px;
+  max-width: 231px;
+  min-height: 460px;
+}
+
+.apps-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apps-block div a {
+  text-decoration: none;
+}
+
+.app-block {
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
