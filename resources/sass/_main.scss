@@ -1,60 +1,61 @@
 body .tooltip-inner {
-    background: #e7e7e7;
-    color: #181818;
-    font-size: 12px;
+  background: #f3f3f3;
+  color: #252525;
+  font-size: 12px;
+  padding: 6px 16px;
 }
 
 body .tooltip .arrow::before {
-    border-bottom-color: #e7e7e7;
+  border-bottom-color: #f3f3f3;
 }
 
 .content {
-    margin-top: 62px;
+  margin-top: 55px;
 }
 
 .content-main {
-    background-color: white;
-    padding: 11px 6px;
-    border-radius: 0 0 4px 4px;
+  background-color: white;
+  padding: 23px 6px;
+  border-radius: 0 0 4px 4px;
 }
 
 .content-main0 {
-    padding: 11px 6px;
-}
-
-.avatar {
-    width: 100px;
-}
-
-.avatar-sm {
-    width: 60px;
+  padding: 11px 6px;
 }
 
 .required:after {
-    content: '*';
-    color: #d51818;
+  content: '*';
+  color: #d51818;
+}
+
+.avatar {
+  width: 100px;
+}
+
+.avatar-sm {
+  width: 60px;
 }
 
 .phone {
-    max-width: 231px;
-    min-height: 460px;
+  max-width: 231px;
+  min-height: 460px;
 }
 
 .apps-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .apps-block div a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .app-block {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group {
-    position: relative;
+  position: relative;
 }

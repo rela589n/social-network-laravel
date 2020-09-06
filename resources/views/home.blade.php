@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="row">
- 
+
   <div class="col-lg-6 mt-3 text-center">
-    <h1>{{ config('app.name') }} для мобильных устройств</h1>
-    <p>Установите официальное мобильное приложение и оставайтесь в курсе новостей Ваших друзей,
-    где бы Вы ни находились.</p>
-    <h3>Нас уже: {{ $count_register_users }}</h3>
+    <h3 class="pt-4 font-weight-bold">{{ config('app.name') }} для мобильных устройств</h3>
+    <p class="text-secondary">
+      Установите официальное мобильное приложение и оставайтесь в курсе новостей Ваших друзей,
+      где бы Вы ни находились.
+    </p>
+    <h5>Нас уже: {{ $count_register_users }}</h5>
     
     <div class="apps-block">
       <div class="app-block">
@@ -32,7 +34,6 @@
         </a>
       </div>
     </div>
-
   </div>
 
   <div class="offset-lg-2 col-lg-4 mt-3">

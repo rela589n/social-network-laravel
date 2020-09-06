@@ -4,7 +4,7 @@
 <div class="row content-main0">
   <div class="col-lg-6 card card-body mx-auto">
 
-    <ul class="nav nav-tabs mb-2" id="myTab" role="tablist">
+    <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <a class="nav-link active" id="home-tab"
           data-toggle="tab" href="#home" role="tab"

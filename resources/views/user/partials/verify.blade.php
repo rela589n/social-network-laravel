@@ -1,8 +1,9 @@
 @if ($verify)
-    <img src="{{ asset('images/verify.png') }}"
-        class="verify ml-1"
-        alt="Подтвержденная страница"
-        data-toggle="tooltip"
-        data-placement="bottom"
-        title="Подтвержденная страница">
+    <i class="fas fa-check-circle verify ml-1"
+       alt="Подтвержденная страница"
+       data-container="body"
+       data-toggle="popover"
+       data-placement="bottom"
+       data-content="Эта страница официально подтверждена.">
+    </i>
 @endif

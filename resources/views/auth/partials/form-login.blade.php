@@ -36,11 +36,11 @@
                class="custom-control-input"
                id="remember"
                {{ old('remember') ? 'checked' : '' }}>
-        <label class="custom-control-label"
+        <label class="custom-control-label text-secondary"
                for="remember">Запомнить меня</label>
     </div>
     
-    <button type="submit" class="btn btn-primary">Войти</button>
+    <button type="submit" class="btn btn-primary btn-block">Войти</button>
 
     @if (Route::has('password.request'))
         <a class="btn btn-link"

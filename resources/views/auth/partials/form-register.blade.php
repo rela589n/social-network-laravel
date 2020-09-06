@@ -60,5 +60,5 @@
       </div>
   </div>
   
-  <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+  <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
 </form>
