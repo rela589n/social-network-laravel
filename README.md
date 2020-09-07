@@ -2,8 +2,8 @@
 
 A small social network on Laravel.
 
-![screenshot_1](screenshots/screenshot_1.png)
-![screenshot_2](screenshots/screenshot_2.png)
+![screenshot_1](screenshots/1.png)
+![screenshot_2](screenshots/2.png)
 
 ## Install
 cd project

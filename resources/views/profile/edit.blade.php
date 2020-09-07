@@ -33,43 +33,43 @@
               <div class="col-sm-6">
                 <div class="form-group">
                     <input type="text"
-                          name="first_name" 
-                          class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}"
-                          placeholder="Имя"
-                          value="{{ Request::old('first_name') ?: Auth::user()->first_name }}">
+                           name="first_name" 
+                           class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}"
+                           placeholder="Имя"
+                           value="{{ Request::old('first_name') ?: Auth::user()->first_name }}">
 
-                    @if ($errors->has('first_name') )
-                        <span class="invalid-feedback">
-                          {{ $errors->first('first_name') }}
-                        </span>
+                    @if ( $errors->has('first_name') )
+                      <span class="invalid-feedback">
+                        {{ $errors->first('first_name') }}
+                      </span>
                     @endif
                 </div>
 
                 <div class="form-group">
                     <input type="text"
-                          name="last_name" 
-                          class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
-                          placeholder="Фамилия"
-                          value="{{ Request::old('last_name') ?: Auth::user()->last_name }}">
+                           name="last_name" 
+                           class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
+                           placeholder="Фамилия"
+                           value="{{ Request::old('last_name') ?: Auth::user()->last_name }}">
                     
-                    @if ($errors->has('last_name') )
-                        <span class="invalid-feedback">
-                          {{ $errors->first('last_name') }}
-                        </span>
+                    @if ( $errors->has('last_name') )
+                      <span class="invalid-feedback">
+                        {{ $errors->first('last_name') }}
+                      </span>
                     @endif
                 </div>
 
                 <div class="form-group">
                     <input type="text"
-                          name="location" 
-                          class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" 
-                          placeholder="Страна"
-                          value="{{ Request::old('location') ?: Auth::user()->location }}">
+                           name="location" 
+                           class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" 
+                           placeholder="Страна"
+                           value="{{ Request::old('location') ?: Auth::user()->location }}">
                     
-                    @if ($errors->has('location') )
-                        <span class="invalid-feedback">
-                          {{ $errors->first('location') }}
-                        </span>
+                    @if ( $errors->has('location') )
+                      <span class="invalid-feedback">
+                        {{ $errors->first('location') }}
+                      </span>
                     @endif
                 </div>
 
@@ -77,18 +77,18 @@
 
               <div class="col-sm-6">
                 <div class="form-group">
-                    <select name="gender"
-                            class="custom-select @error('gender') is-invalid @enderror">
-                        <option value="">Ваш пол</option>
-                        <option value="m" {{ Auth::user()->gender === 'm' ? 'selected' : '' }}>Мужчина</option>
-                        <option value="f" {{ Auth::user()->gender === 'f' ? 'selected' : '' }}>Женщина</option>
-                    </select>
+                  <select name="gender"
+                          class="custom-select @error('gender') is-invalid @enderror">
+                    <option value="">Ваш пол</option>
+                    <option value="m" {{ Auth::user()->gender === 'm' ? 'selected' : '' }}>Мужчина</option>
+                    <option value="f" {{ Auth::user()->gender === 'f' ? 'selected' : '' }}>Женщина</option>
+                  </select>
                 </div>
               </div>
 
             </div>
 
-              <button type="submit" class="btn btn-primary">Обновить профиль</button>
+            <button type="submit" class="btn btn-primary">Обновить профиль</button>
           </form>
       </div>
 

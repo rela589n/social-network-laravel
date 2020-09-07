@@ -10,7 +10,9 @@
         <p>У вас нет друзей.</p>
     @else
         @foreach ($friends as $user)
+
           @include('user.partials.userblock')
+
         @endforeach
     @endif
   </div>
@@ -22,7 +24,9 @@
         <p>У вас нет запросов в друзья.</p>
     @else
         @foreach ($requests as $user)
+
           @include('user.partials.userblock')
+          
         @endforeach
     @endif
   </div>

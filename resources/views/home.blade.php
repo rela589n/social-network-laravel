@@ -39,13 +39,13 @@
   <div class="offset-lg-2 col-lg-4 mt-3">
     <div class="row">
       <div class="card card-body">
-        @include('auth.partials.form-login')
+        @include('auth.parts.form-login')
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="card card-body">
-        @include('auth.partials.form-register')
+        @include('auth.parts.form-register')
       </div>
     </div>
   </div>
