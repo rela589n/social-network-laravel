@@ -10,17 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-# Главная
+
 Route::get('/', 'HomeController@index')->name('home');
 
-# Авторизация
 Auth::routes(['verify' => true]);
 
 # Поиск
-Route::get('/search', 'SearchController@getResults')->middleware('verified')->name('search.results');
+Route::get('/search', 'SearchController@getResults')
+    ->middleware('verified')->name('search.results');
 
 # Профили
-Route::get('/user/{username}', 'ProfileController@getProfile')->middleware('verified')->name('profile.index');
+Route::get('/user/{username}', 'ProfileController@getProfile')
+    ->middleware('verified')->name('profile.index');
 
 Route::middleware(['auth', 'verified'])->prefix('profile')->name('profile.')->group(function () {
     Route::get('/edit', 'ProfileController@getEdit')->name('edit');

@@ -15,7 +15,7 @@ body .tooltip .arrow::before {
 
 .content-main {
   background-color: white;
-  padding: 23px 6px;
+  padding: 23px 6px 0 6px;
   border-radius: 0 0 4px 4px;
 }
 
@@ -26,6 +26,10 @@ body .tooltip .arrow::before {
 .required:after {
   content: '*';
   color: #d51818;
+}
+
+.mt-75 {
+  margin-top: 75px;
 }
 
 .avatar {

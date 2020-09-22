@@ -12,12 +12,12 @@ class Like extends Model
     # полиморфная связь
     public function likeable()
     {
-        return $this->morphTo();
+      return $this->morphTo();
     }
 
     # получить пользователя по лайку (обратное отношение)
     public function user()
     {
-        return $this->belongsTo('App\Models\User', 'user_id');
+      return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

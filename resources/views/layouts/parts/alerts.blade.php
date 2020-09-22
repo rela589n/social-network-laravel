@@ -1,5 +1,5 @@
 @if ( Session::has('info') )
-  <div class="alert alert-primary alert-dismissible fade show"
+  <div class="alert alert-primary mt-75 alert-dismissible fade show"
        role="alert">
   {{ Session::get('info') }}
     <button type="button"
