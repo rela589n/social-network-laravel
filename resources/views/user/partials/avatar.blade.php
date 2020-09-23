@@ -1,10 +1,10 @@
-@if ( ! $status->user->avatar )
+@if ( ! $wall->avatar )
     <img class="avatar-sm media-object img-thumbnail rounded-circle"
-         src="{{ $status->user->getAvatarUrl() }}"
-         alt="{{ $status->user->getNameOrUsername() }}">
+         src="{{ $wall->getAvatarUrl() }}"
+         alt="{{ $wall->getNameOrUsername() }}">
 @else
-    <img src="{{ $status->user->getAvatarsPath($status->user->id)
-               . $status->user->avatar }}"
+    <img src="{{ $wall->getAvatarsPath($wall->id)
+               . $wall->avatar }}"
          class="avatar-sm media-object img-thumbnail rounded-circle"
-         alt="{{ $status->user->getNameOrUsername() }}">
+         alt="{{ $wall->getNameOrUsername() }}">
 @endif

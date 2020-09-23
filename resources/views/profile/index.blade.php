@@ -32,7 +32,7 @@
         <a class="mr-3" href="{{ route('profile.index',
                                  ['username' => $status->user->username ]) }}">
 
-        @include('user.partials.avatar')
+        @include('user.partials.avatar', ['wall' => $status->user])
 
         </a>
 
@@ -58,9 +58,9 @@
           <div class="media">
             <a class="mr-3" href="{{ route('profile.index',
                                      ['username' => $reply->user->username ]) }}">
-            <img class="media-object img-thumbnail rounded-circle"
-                 src="{{ $reply->user->getAvatarUrl() }}"
-                 alt="{{ $reply->user->getNameOrUsername() }}">
+
+               @include('user.partials.avatar', ['wall' => $reply->user])
+
             </a>
             <div class="media-body">
 

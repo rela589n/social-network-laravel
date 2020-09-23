@@ -1,4 +1,4 @@
-# Laravel Social Network
+# Laravel 8 - Social Network
 
 A small social network on Laravel.
 
@@ -28,7 +28,10 @@ DB_PASSWORD=your password
 ```
 
 ## Running Migrations
-`php artisan migrate`
+```
+php artisan migrate
+php artisan db:seed
+```
 
 ## Connection to Mailtrap `.env`
 ```
@@ -41,3 +44,7 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=social-network@gmail.com
 MAIL_FROM_NAME="${APP_NAME}"
 ```
+
+## Login
+admin@gmail.com
+admin123

@@ -4,7 +4,8 @@
 <div class="row">
 
   <div class="col-lg-6 mt-3 text-center">
-    <h3 class="pt-4 text-primary font-weight-bold">{{ config('app.name') }} для мобильных устройств</h3>
+    <h3 class="pt-4 text-primary font-weight-bold">
+      {{ config('app.name') }} для мобильных устройств</h3>
     <p class="text-secondary">
       Установите официальное мобильное приложение и оставайтесь в курсе новостей Ваших друзей,
       где бы Вы ни находились.
@@ -39,13 +40,17 @@
   <div class="offset-lg-2 col-lg-4 mt-3">
     <div class="row">
       <div class="card card-body">
+
         @include('auth.parts.form-login')
+
       </div>
     </div>
 
     <div class="row mt-3">
       <div class="card card-body">
+
         @include('auth.parts.form-register')
+
       </div>
     </div>
   </div>
