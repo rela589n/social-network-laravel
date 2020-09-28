@@ -1,8 +1,8 @@
 <div class="d-flex align-items-center">
   <a href="{{ route('profile.index',
-              ['username' => $status->user->username ]) }}"
+              ['username' => $wall->user->username ]) }}"
      class="profile-link">
-  {{ $status->user->getNameOrUsername() }}</a>
+  {{ $wall->user->getNameOrUsername() }}</a>
   
-  @include('user.partials.verify', ['verify' => $status->user->verify ] )
+  @include('user.partials.verify', ['verify' => $wall->user->verify ] )
 </div>

@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Status extends Model
+class Wall extends Model
 {
-    protected $table = 'statuses';
+    protected $table = 'walls';
     protected $fillable = ['body'];
 
     # получить пользователя по записи на стене (обратное отношение)
@@ -24,7 +24,7 @@ class Status extends Model
     # получить комментарии к записи на стене (связь один ко многим)
     public function replies()
     {
-        return $this->hasMany('App\Models\Status', 'parent_id');
+        return $this->hasMany('App\Models\Wall', 'parent_id')->latest();
     }
 
     # Получить все лайки к записи

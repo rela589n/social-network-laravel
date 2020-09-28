@@ -63,7 +63,7 @@
                     <input type="text"
                            name="location" 
                            class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" 
-                           placeholder="Локация, из Украины"
+                           placeholder="Откуда"
                            value="{{ Request::old('location') ?: Auth::user()->location }}">
                     
                     @if ( $errors->has('location') )

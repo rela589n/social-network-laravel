@@ -75,9 +75,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     # пользователю принадлежит статус (связь один ко многим)
-    public function statuses()
+    public function walls()
     {
-        return $this->hasMany('App\Models\Status', 'user_id');
+        return $this->hasMany('App\Models\Wall', 'user_id');
     }
 
     # получить лайки пользователя (связь один ко многим)
@@ -156,9 +156,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     # запись уже пролайкана
-    public function hasLikedStatus(Status $status)
+    public function hasLikedWall(Wall $wall)
     {
-        return (bool) $status->likes
+        return (bool) $wall->likes
             ->where('user_id', $this->id)
             ->count();
     }

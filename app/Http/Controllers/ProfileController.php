@@ -17,11 +17,11 @@ class ProfileController extends Controller
         # если пользователь не найден в базе
         if ( ! $user ) abort(404);
 
-        $statuses = $user->statuses()->notReply()->get();
+        $walls = $user->walls()->notReply()->latest()->get();
 
         return view('profile.index', [
             'user' => $user,
-            'statuses' => $statuses,
+            'walls' => $walls,
             'authUserIsFriend' => Auth::user()->isFriendWith($user)
         ]);
     }

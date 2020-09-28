@@ -38,8 +38,8 @@ Route::middleware(['auth', 'verified'])->prefix('friends')->name('friend.')->gro
 });
 
 # Стена
-Route::middleware(['auth', 'verified'])->prefix('status')->name('status.')->group(function () {
-    Route::post('/', 'StatusController@postStatus')->name('post');
-    Route::post('/{statusId}/reply', 'StatusController@postReply')->name('reply');
-    Route::get('/{statusId}/like', 'StatusController@getLike')->name('like');
+Route::middleware(['auth', 'verified'])->prefix('wall')->name('wall.')->group(function () {
+    Route::post('/', 'WallController@postWall')->name('post');
+    Route::post('/{id}/reply', 'WallController@postReply')->name('reply');
+    Route::get('/{id}/like', 'WallController@getLike')->name('like');
 });

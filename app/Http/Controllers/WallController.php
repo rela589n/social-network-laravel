@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Models\{ User, Status};
+use App\Models\{ User, Wall};
 use Illuminate\Http\Request;
 
-class StatusController extends Controller
+class WallController extends Controller
 {
     # опубликовать запись на стене
-    public function postStatus(Request $request)
+    public function postWall(Request $request)
     {
         $this->validate($request, [
-            'status' => 'required|max:1000'
+            'wall' => 'required|max:1000'
         ]);
 
-        Auth::user()->statuses()->create([
-            'body' => $request->input('status')
+        Auth::user()->walls()->create([
+            'body' => $request->input('wall')
         ]);
 
         return redirect()
@@ -25,55 +25,55 @@ class StatusController extends Controller
     }
 
     # опубликовать комментарий к записи на стене
-    public function postReply(Request $request, $statusId)
+    public function postReply(Request $request, $id)
     {
         $this->validate($request, [
-            "reply-{$statusId}" => 'required|max:1000'
+            "reply-{$id}" => 'required|max:1000'
         ], [
             'required' => 'Обязательно для заполнения'
         ]);
 
-        $status = Status::notReply()->find($statusId);
+        $wall = Wall::notReply()->find($id);
 
         # если записи нет в базе
-        if ( ! $status ) redirect()->route('home');
+        if ( ! $wall ) redirect()->route('home');
 
-        if ( ! Auth::user()->isFriendWith($status->user)
-            && Auth::user()->id !== $status->user->id )
+        if ( ! Auth::user()->isFriendWith($wall->user)
+            && Auth::user()->id !== $wall->user->id )
         {
             return redirect()->route('home');
         }
 
-        $reply = new Status();
-        $reply->body = $request->input("reply-{$status->id}");
+        $reply = new Wall();
+        $reply->body = $request->input("reply-{$wall->id}");
         $reply->user()->associate( Auth::user() );
-        $status->replies()->save($reply);
+        $wall->replies()->save($reply);
 
         return redirect()->back();
     }
 
     # поставить лайк
-    public function getLike($statusId)
+    public function getLike($id)
     {
-        $status = Status::find($statusId);
+        $wall = Wall::find($id);
 
         # если записи нет в базе
-        if ( ! $status ) redirect()->route('home');
+        if ( ! $wall ) redirect()->route('home');
 
         # если пользователь не в друзьях
-        if ( ! Auth::user()->isFriendWith($status->user) )
+        if ( ! Auth::user()->isFriendWith($wall->user) )
         {
             return redirect()->route('home');
         }
 
         # если запись уже пролайкана
-        if ( Auth::user()->hasLikedStatus($status) )
+        if ( Auth::user()->hasLikedWall($wall) )
         {
             return redirect()->back();
         }
 
         # лайкнуть запись
-        $status->likes()->create(['user_id' => Auth::user()->id ]);
+        $wall->likes()->create(['user_id' => Auth::user()->id ]);
 
         return redirect()->back();
     }
