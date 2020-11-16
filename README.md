@@ -6,16 +6,12 @@ A small social network on Laravel.
 ![screenshot_2](screenshots/2.png)
 
 ## Install
-cd project
-`composer install` (see folder **vendor**)
 
-cd project
-`npm install` (see folder **node_modules**)
-
-clone `.env.example` and rename to `.env`
-
-Generate APP_KEY
-`php artisan key:generate`
+- `git clone git@github.com:rela589n/social-network-laravel.git`
+- `composer install`
+- `npm install`
+- `cp .env.example .env`
+- `php artisan key:generate`
 
 ## Connection to DataBase `.env`
 ```
