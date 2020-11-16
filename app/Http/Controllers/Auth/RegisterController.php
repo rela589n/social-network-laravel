@@ -52,7 +52,7 @@ class RegisterController extends Controller
         # unique:users,email - email искать данное поле в базе
         # проверка на уникальность по email
         $validator = Validator::make($data, [
-            'register_username' => ['required', 'string', 'max:30'],
+            'register_username' => ['required', 'string', 'max:30', 'unique:users,username'],
             'register_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
             'register_password' => ['required', 'string', 'min:8'],
             'gender' => ['required', 'string'],
@@ -63,7 +63,7 @@ class RegisterController extends Controller
             'register_email' => 'E-mail',
             'register_password' => 'Пароль',
         ]);
-        
+
         return $validator;
     }
 
