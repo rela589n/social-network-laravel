@@ -20,10 +20,10 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
             'username' => 'admin',
             'password' => Hash::make('admin123'),
-            'first_name' => 'Влад',
-            'last_name' => 'Неверов',
+            'first_name' => 'Eugene',
+            'last_name' => 'Sidelnyk',
             'gender' => 'm',
-            'location' => 'Украина',
+            'location' => 'Україна',
             'verify' => 1,
         ]);
     }
