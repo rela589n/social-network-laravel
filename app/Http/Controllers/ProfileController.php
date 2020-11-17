@@ -13,7 +13,7 @@ class ProfileController extends Controller
     public function getProfile($username)
     {
         $user = User::where('username', $username)->first();
-        
+
         # если пользователь не найден в базе
         if ( ! $user ) abort(404);
 
@@ -22,7 +22,7 @@ class ProfileController extends Controller
         return view('profile.index', [
             'user' => $user,
             'walls' => $walls,
-            'authUserIsFriend' => Auth::user()->isFriendWith($user)
+            'authUserIsFriend' => Auth::user()->isFriendOf($user)
         ]);
     }
 
@@ -33,7 +33,7 @@ class ProfileController extends Controller
     }
 
     # отредактировать профиль
-    public function postEdit(Request $request) 
+    public function postEdit(Request $request)
     {
         $this->validate($request, [
             'first_name' => 'alpha|max:50',

@@ -38,7 +38,7 @@ class WallController extends Controller
         # если записи нет в базе
         if ( ! $wall ) redirect()->route('home');
 
-        if ( ! Auth::user()->isFriendWith($wall->user)
+        if ( ! Auth::user()->isFriendOf($wall->user)
             && Auth::user()->id !== $wall->user->id )
         {
             return redirect()->route('home');
@@ -61,7 +61,7 @@ class WallController extends Controller
         if ( ! $wall ) redirect()->route('home');
 
         # если пользователь не в друзьях
-        if ( ! Auth::user()->isFriendWith($wall->user) )
+        if ( ! Auth::user()->isFriendOf($wall->user) )
         {
             return redirect()->route('home');
         }

@@ -13,7 +13,7 @@ class FriendController extends Controller
     {
         return view('friends.index',
         [
-            'friends' => Auth::user()->friends(),
+            'friends' => Auth::user()->acceptedFriends(),
             'requests' => Auth::user()->friendRequests()
         ]);
     }
@@ -47,7 +47,7 @@ class FriendController extends Controller
         }
 
         # если пользователь уже в друзьях
-        if ( Auth::user()->isFriendWith($user) )
+        if ( Auth::user()->isFriendOf($user) )
         {
             return redirect()
                    ->route('profile.index', ['username' => $user->username])
@@ -93,7 +93,7 @@ class FriendController extends Controller
         $user = User::where('username', $username)->first();
 
         # если пользователь не в друзьях
-        if ( ! Auth::user()->isFriendWith($user) )
+        if ( ! Auth::user()->isFriendOf($user) )
         {
             return redirect()->back();
         }

@@ -17,7 +17,7 @@ class HomeController extends Controller
             $walls = Wall::notReply()->where(function($query)
             {
                 return $query->where('user_id', Auth::user()->id)
-                             ->orWhereIn('user_id', Auth::user()->friends()->pluck('id') );
+                             ->orWhereIn('user_id', Auth::user()->acceptedFriends()->pluck('id') );
             })
             ->orderBy('created_at', 'desc')
             ->paginate(10);

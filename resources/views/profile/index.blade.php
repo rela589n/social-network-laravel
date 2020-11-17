@@ -118,7 +118,7 @@
     @elseif ( Auth::user()->hasFriendRequestReceived($user) )
       <a href="{{ route('friend.accept', ['username' => $user->username ]) }}"
          class="btn btn-primary mb-2">Подтвердить дружбу</a>
-    @elseif ( Auth::user()->isFriendWith($user) )
+    @elseif ( Auth::user()->isFriendOf($user) )
       {{ $user->getFirstNameOrUsername() }} у Вас в друзьях.
 
       <form action="{{ route('friend.delete',
@@ -146,7 +146,7 @@
 
       @endforeach
     @endif
-     
+
   </div>
 </div>
 @endsection
