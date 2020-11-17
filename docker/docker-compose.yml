@@ -1,0 +1,57 @@
+version: "3.7"
+services:
+  php:
+    build:
+      args:
+        uname: ${PHP_UNAME}
+        uid: ${PHP_UID}
+        gid: ${PHP_GID}
+      context: ./services/php
+    image: ${IMAGE_NAME}
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ../:/var/www
+    environment:
+      COMPOSER_MEMORY_LIMIT: 2G
+      XDEBUG_CONFIG: remote_host=${XDEBUG_REMOTE_HOST} remote_enable=1 remote_autostart=off remote_port=${XDEBUG_STORM_PORT}
+      PHP_IDE_CONFIG: serverName=${XDEBUG_STORM_SERVER_NAME}
+    networks:
+      - main_network
+    depends_on:
+      - db
+  db:
+    image: postgres:13.0
+    restart: unless-stopped
+    container_name: my-web-container
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - ${DB_LOCAL_PORT}:5432
+    volumes:
+      - ./services/database/dump:/var/lib/postgresql/data
+    networks:
+      - main_network
+  nginx:
+    image: nginx:1.17-alpine
+    restart: unless-stopped
+    ports:
+      - ${NGINX_LOCAL_PORT}:80
+    volumes:
+      - ../:/var/www
+      - ./services/nginx:/etc/nginx/conf.d
+    networks:
+      - main_network
+    depends_on:
+      - php
+networks:
+  main_network:
+    driver: bridge
+    name: ${NETWORK_MAIN}
+    ipam:
+      driver: default
+#      config:
+#        - subnet: ${XDEBUG_SUBNET_IP}/${XDEBUG_SUBNET_MASK}
