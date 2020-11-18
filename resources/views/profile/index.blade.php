@@ -64,7 +64,7 @@
             </a>
             <div class="media-body">
 
-            @include('user.partials.username')
+            @include('user.partials.username',  ['wall' => $reply])
 
             <p>{{ $reply->body }}</p>
             <ul class="list-inline">
