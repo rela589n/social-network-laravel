@@ -16,15 +16,15 @@
           class="my-4"
           method="POST">
       @csrf
-        <label for="avatar">Загрузить аватар</label><br>
+        <label for="avatar">Завантажити аватар</label><br>
         <input type="file" name="avatar" id="avatar">
-        <input type="submit" class="btn btn-primary" value="Загрузить">
+        <input type="submit" class="btn btn-primary" value="Завантажити">
     </form>
     @endif
 
     @if ( ! $walls->count() )
       <div class="alert alert-primary" role="alert">
-        Пока нет ни одной записи на стене.
+        Поки що немає записів на стіні.
       </div>
     @else
       @foreach ($walls as $wall)
@@ -93,7 +93,7 @@
             <div class="form-group">
               <textarea name="reply-{{ $wall->id }}"
                         class="form-control{{ $errors->has("reply-{$wall->id}") ? ' is-invalid' : '' }}"
-                        placeholder="Прокомментировать" rows="3"></textarea>
+                        placeholder="Коментувати" rows="3"></textarea>
 
               @if ($errors->has("reply-{$wall->id}") )
                 <span class="invalid-feedback">
@@ -102,7 +102,7 @@
               @endif
             </div>
 
-            <button type="submit" class="btn btn-primary btn-sm">Написать</button>
+            <button type="submit" class="btn btn-primary btn-sm">Написати</button>
           </form>
         @endif
 
@@ -114,12 +114,12 @@
 
   <div class="col-lg-4">
     @if ( Auth::user()->hasFriendRequestPending($user) )
-      <p>В ожидании подтверждения запроса в друзья.</p>
+      <p>В очікуванні підтвердження запиту в друзі.</p>
     @elseif ( Auth::user()->hasFriendRequestReceived($user) )
       <a href="{{ route('friend.accept', ['username' => $user->username ]) }}"
-         class="btn btn-primary mb-2">Подтвердить дружбу</a>
+         class="btn btn-primary mb-2">Підтвердити дружбу</a>
     @elseif ( Auth::user()->isFriendOf($user) )
-      {{ $user->getFirstNameOrUsername() }} у Вас в друзьях.
+      {{ $user->getFirstNameOrUsername() }} у Вас в друзях.
 
       <form action="{{ route('friend.delete',
                         ['username' => $user->username ]) }}"
@@ -127,20 +127,20 @@
         @csrf
         <input type="submit"
                class="btn btn-primary my-2"
-               value="Удалить из друзей">
+               value="Видалити з друзів">
       </form>
     @elseif ( Auth::user()->id !== $user->id )
       <a href="{{ route('friend.add',
                   ['username' => $user->username ]) }}"
-         class="btn btn-primary mb-2">Добавить в друзья</a>
+         class="btn btn-primary mb-2">Додати в друзі</a>
     @endif
 
     <h4>Друзья</h4>
-    @if ( ! $user->friends()->count() )
+    @if ( ! $user->acceptedFriends()->count() )
       <p>У @name($user->getFirstNameOrUsername(),
-                 $user->gender, 'родительный') нет друзей</p>
+                 $user->gender, 'родительный') немає друзів</p>
     @else
-      @foreach ( $user->friends() as $user )
+      @foreach ( $user->acceptedFriends() as $user )
 
         @include('user.partials.userblock')
 

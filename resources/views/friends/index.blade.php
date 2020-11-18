@@ -1,35 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row content-main">
+    <div class="row content-main">
 
-  <div class="col-lg-6">
-    <h3>Ваши друзья</h3>
+        <div class="col-lg-6">
+            <h3>Ваші друзі</h3>
 
-    @if ( ! $friends->count() )
-        <p>У вас нет друзей.</p>
-    @else
-        @foreach ($friends as $user)
+            @if ( ! $friends->count() )
+                <p>У вас немає друзів.</p>
+            @else
+                @foreach ($friends as $user)
 
-          @include('user.partials.userblock')
+                    @include('user.partials.userblock')
 
-        @endforeach
-    @endif
-  </div>
+                @endforeach
+            @endif
+        </div>
 
-  <div class="col-lg-6">
-    <h3>Запросы в друзья</h3>
+        <div class="col-lg-6">
+            <h3>Запити на дружбу</h3>
 
-    @if ( ! $requests->count() )
-        <p>У вас нет запросов в друзья.</p>
-    @else
-        @foreach ($requests as $user)
+            @if ( ! $requests->count() )
+                <p>У вас немає запитів на дружбу</p>
+            @else
+                @foreach ($requests as $user)
 
-          @include('user.partials.userblock')
-          
-        @endforeach
-    @endif
-  </div>
+                    @include('user.partials.userblock')
 
-</div>
+                @endforeach
+            @endif
+        </div>
+
+    </div>
 @endsection

@@ -30,7 +30,7 @@
       © {{ date('Y') }}
     </div>
     <div>
-      <a href="#">О {{ config('app.name') }}</a>
+      <a href="#">Про {{ config('app.name') }}</a>
       <a href="#">Правила</a>
     </div>
   </footer>

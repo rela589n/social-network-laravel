@@ -25,7 +25,7 @@
     </div>
 
     @if ($user->location)
-      <p>Откуда: {{ $user->location }}</p>
+      <p>Звідки: {{ $user->location }}</p>
     @endif
 
   </div>

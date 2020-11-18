@@ -2,105 +2,101 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Auth;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
 
 class FriendController extends Controller
 {
-    # страница мои друзья
+    /**
+     * my friends controller
+     *
+     * @return Application|Factory|View
+     */
     public function getIndex()
     {
-        return view('friends.index',
-        [
-            'friends' => Auth::user()->acceptedFriends(),
-            'requests' => Auth::user()->friendRequests()
-        ]);
+        return view(
+            'friends.index',
+            [
+                'friends'  => Auth::user()->acceptedFriends(),
+                'requests' => Auth::user()->friendRequests()
+            ]
+        );
     }
 
-    # отправить заявку в друзья
+    /**
+     * post friend request
+     *
+     * @param $username
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function getAdd($username)
     {
         $user = User::where('username', $username)->first();
 
-        # если пользователь не найден в базе
-        if ( ! $user )
-        {
+        if (!$user) {
             return redirect()
-                   ->route('home')
-                   ->with('info', 'Пользователь не найден!');
+                ->route('home')
+                ->with('info', 'Користувач не знайдений!');
         }
 
-        # если это наша страница
-        if ( Auth::user()->id === $user->id )
-        {
+        if (Auth::user()->id === $user->id) {
             return redirect()->route('home');
         }
 
-        # если уже отправлен запрос в друзья
-        if ( Auth::user()->hasFriendRequestPending($user)
-            || $user->hasFriendRequestPending( Auth::user() ) )
-        {
+        if (Auth::user()->hasFriendRequestPending($user)
+            || $user->hasFriendRequestPending(Auth::user())) {
             return redirect()
-                   ->route('profile.index', ['username' => $user->username])
-                   ->with('info', 'Пользователю отправлен запрос в друзья.');
+                ->route('profile.index', ['username' => $user->username])
+                ->with('info', 'Запит в друзі вже відправлений!');
         }
 
-        # если пользователь уже в друзьях
-        if ( Auth::user()->isFriendOf($user) )
-        {
+        if (Auth::user()->isFriendOf($user)) {
             return redirect()
-                   ->route('profile.index', ['username' => $user->username])
-                   ->with('info', 'Пользователь уже в друзьях.');
+                ->route('profile.index', ['username' => $user->username])
+                ->with('info', 'Користувач уже є вашим другом.');
         }
 
-        # добавить в друзья
         Auth::user()->addFriend($user);
 
         return redirect()
-               ->route('profile.index', ['username' => $username])
-               ->with('info', 'Пользователю отправлен запрос в друзья.');
+            ->route('profile.index', ['username' => $username])
+            ->with('info', 'Запит в друзі відправлено.');
     }
 
     public function getAccept($username)
     {
         $user = User::where('username', $username)->first();
 
-        # если пользователь не найден в базе
-        if ( ! $user )
-        {
+        if (!$user) {
             return redirect()
-                   ->route('home')
-                   ->with('info', 'Пользователь не найден!');
+                ->route('home')
+                ->with('info', 'Користувача не знайдено');
         }
 
-        # если не получил запрос о дружбе
-        if ( ! Auth::user()->hasFriendRequestReceived($user) )
-        {
+        if (!Auth::user()->hasFriendRequestReceived($user)) {
             return redirect()->route('home');
         }
 
-        # принять запрос на дружбу
         Auth::user()->acceptFriendRequest($user);
 
         return redirect()
-               ->route('profile.index', ['username' => $username])
-               ->with('info', 'Запрос в друзья принят.');
+            ->route('profile.index', ['username' => $username])
+            ->with('info', 'Запит в друзі прийнято');
     }
 
     public function postDelete($username)
     {
         $user = User::where('username', $username)->first();
 
-        # если пользователь не в друзьях
-        if ( ! Auth::user()->isFriendOf($user) )
-        {
+        if (!Auth::user()->isFriendOf($user)) {
             return redirect()->back();
         }
 
-        # удалить из друзей
         Auth::user()->deleteFriend($user);
 
-        return redirect()->back()->with('info', 'Удален из друзей.');
+        return redirect()->back()->with('info', 'Видалено з друзів.');
     }
 }

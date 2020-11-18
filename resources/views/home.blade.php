@@ -5,13 +5,12 @@
 
   <div class="col-lg-6 mt-3 text-center">
     <h3 class="pt-4 text-primary font-weight-bold">
-      {{ config('app.name') }} для мобильных устройств</h3>
+      {{ config('app.name') }} для мобільних пристроїв</h3>
     <p class="text-secondary">
-      Установите официальное мобильное приложение и оставайтесь в курсе новостей Ваших друзей,
-      где бы Вы ни находились.
+        Встановіть офіційний мобільний додаток і залишайтеся в курсі новин Ваших друзів, де б Ви не знаходилися.
     </p>
-    <h5>Нас уже: {{ $count_reg_user }}</h5>
-    
+    <h5>Нас вже: {{ $count_reg_user }}</h5>
+
     <div class="apps-block">
       <div class="app-block">
         <a href="#android"

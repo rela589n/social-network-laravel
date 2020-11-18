@@ -8,17 +8,17 @@
       <li class="nav-item" role="presentation">
         <a class="nav-link active" id="home-tab"
           data-toggle="tab" href="#home" role="tab"
-          aria-controls="home" aria-selected="true">Основное</a>
+          aria-controls="home" aria-selected="true">Основне</a>
       </li>
       <li class="nav-item" role="presentation">
         <a class="nav-link" id="profile-tab"
           data-toggle="tab" href="#profile" role="tab"
-          aria-controls="profile" aria-selected="false">Обо мне</a>
+          aria-controls="profile" aria-selected="false">Про мене</a>
       </li>
       <li class="nav-item" role="presentation">
         <a class="nav-link" id="contact-tab"
           data-toggle="tab" href="#contact" role="tab"
-          aria-controls="contact" aria-selected="false">Контакты</a>
+          aria-controls="contact" aria-selected="false">Контакти</a>
       </li>
     </ul>
 
@@ -33,9 +33,9 @@
               <div class="col-sm-6">
                 <div class="form-group">
                     <input type="text"
-                           name="first_name" 
+                           name="first_name"
                            class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}"
-                           placeholder="Имя"
+                           placeholder="Ім'я"
                            value="{{ Request::old('first_name') ?: Auth::user()->first_name }}">
 
                     @if ( $errors->has('first_name') )
@@ -47,11 +47,11 @@
 
                 <div class="form-group">
                     <input type="text"
-                           name="last_name" 
-                           class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
-                           placeholder="Фамилия"
+                           name="last_name"
+                           class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}"
+                           placeholder="Фамілія"
                            value="{{ Request::old('last_name') ?: Auth::user()->last_name }}">
-                    
+
                     @if ( $errors->has('last_name') )
                       <span class="invalid-feedback">
                         {{ $errors->first('last_name') }}
@@ -61,11 +61,11 @@
 
                 <div class="form-group">
                     <input type="text"
-                           name="location" 
-                           class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" 
-                           placeholder="Откуда"
+                           name="location"
+                           class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}"
+                           placeholder="Звідки"
                            value="{{ Request::old('location') ?: Auth::user()->location }}">
-                    
+
                     @if ( $errors->has('location') )
                       <span class="invalid-feedback">
                         {{ $errors->first('location') }}
@@ -79,26 +79,26 @@
                 <div class="form-group">
                   <select name="gender"
                           class="custom-select @error('gender') is-invalid @enderror">
-                    <option value="">Ваш пол</option>
-                    <option value="m" {{ Auth::user()->gender === 'm' ? 'selected' : '' }}>Мужчина</option>
-                    <option value="f" {{ Auth::user()->gender === 'f' ? 'selected' : '' }}>Женщина</option>
+                    <option value="">Ваша стать</option>
+                    <option value="m" {{ Auth::user()->gender === 'm' ? 'selected' : '' }}>Чоловік</option>
+                    <option value="f" {{ Auth::user()->gender === 'f' ? 'selected' : '' }}>Жінка</option>
                   </select>
                 </div>
               </div>
 
             </div>
 
-            <button type="submit" class="btn btn-primary">Обновить профиль</button>
+            <button type="submit" class="btn btn-primary">Оновити профіль</button>
           </form>
       </div>
 
       <div class="tab-pane fade" id="profile"
            role="tabpanel" aria-labelledby="profile-tab">
-      Тут обо мне</div>
+      Про мене</div>
 
       <div class="tab-pane fade" id="contact"
            role="tabpanel" aria-labelledby="contact-tab">
-      Тут контакты</div>
+      Контакти</div>
 
     </div>
 

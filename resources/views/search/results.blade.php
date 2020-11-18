@@ -4,10 +4,10 @@
 <div class="row content-main">
   <div class="col-lg-6">
 
-    <h3>Результаты поиска: "{{ Request::input('query') }}"</h3>
-    
+    <h3>Результати пошуку "{{ Request::input('query') }}": </h3>
+
     @if ( ! $users->count() )
-      <p>Пользователь не найден<p>
+      <p>Користувача не знайдено<p>
     @else
       <div class="row">
         <div class="col-lg-12">
