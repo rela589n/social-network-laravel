@@ -5,7 +5,7 @@
   <div class="row justify-content-center content-main0">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">Восстановление доступа к странице</div>
+        <div class="card-header">Відновлення доступу до сторінки</div>
 
         <div class="card-body">
           @if ( session('status') )
@@ -40,7 +40,7 @@
             <div class="form-group row mb-0">
               <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary">
-                  Восстановить пароль
+                  Відновити пароль
                 </button>
               </div>
             </div>
