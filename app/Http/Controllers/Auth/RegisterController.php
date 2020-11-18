@@ -49,8 +49,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        # unique:users,email - email искать данное поле в базе
-        # проверка на уникальность по email
         $validator = Validator::make($data, [
             'register_username' => ['required', 'string', 'max:30', 'unique:users,username'],
             'register_email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
@@ -59,7 +57,7 @@ class RegisterController extends Controller
         ]);
 
         $validator->setAttributeNames([
-            'register_username' => 'Логин',
+            'register_username' => 'Логін',
             'register_email' => 'E-mail',
             'register_password' => 'Пароль',
         ]);
@@ -71,7 +69,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return User
      */
     protected function create(array $data)
     {
