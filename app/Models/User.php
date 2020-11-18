@@ -124,7 +124,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return "https://www.gravatar.com/avatar/{{ md5($this->email)?d=mp&s=40 }}";
     }
 
-    # пользователю принадлежит статус (связь один ко многим)
     public function walls()
     {
         return $this->hasMany('App\Models\Wall', 'user_id');
