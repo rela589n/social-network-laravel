@@ -135,7 +135,7 @@
          class="btn btn-primary mb-2">Додати в друзі</a>
     @endif
 
-    <h4>Друзья</h4>
+    <h4>Друзі</h4>
     @if ( ! $user->acceptedFriends()->count() )
       <p>У @name($user->getFirstNameOrUsername(),
                  $user->gender, 'родительный') немає друзів</p>
